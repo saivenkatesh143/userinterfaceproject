@@ -16,7 +16,7 @@ const User = mongoose.model("User", userSchema);
 //CREATE a user
 async function register(username, password) { 
   const user = await getUser(username);
-  if(user[0]) throw Error('Username already in use');
+  if(user) throw Error('Username already in use');
 
   const newUser = await User.create({
     username: username,
@@ -26,15 +26,16 @@ async function register(username, password) {
   return newUser;
 }
 
-// READ a user
+
 async function login(username, password) {
-  const user = User.findOne({"username":username});
+  const user = await getUser(username);
   if(!user) throw Error('User not found');
 
   if(user.password !=password) throw Error('Wrong Password');
 
-  return user
+  return user;
 }
+
 
 // UPDATE
 async function updatePassword(id, password) {
@@ -53,4 +54,4 @@ async function getUser(username) {
 }
 
 // 5. export all functions we want to access in route files
-module.exports = {register, login, updatePassword, deleteUser};
+module.exports = {register,login, updatePassword, deleteUser};
