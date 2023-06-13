@@ -10,7 +10,7 @@ router
 
 .post('/getpost', async (req, res) => {
     try {
-      let noteget = await post.getnote(req.body);
+      let noteget = await post.getpost(req.body.id);
       res.send(noteget)
     } catch(err) {
       res.status(401).send({message: err.message});
@@ -18,16 +18,10 @@ router
   })
 
 
-
-
-
-
-  
-
   .post('/createpost', async (req, res) => {
     try {
-      let notecreates = await post.createpost(req.body);
-      res.send(notecreates)
+      let postcreates = await post.createpost(req.body.id, req.body.postcontent);
+      res.send(postcreates)
     } catch(err) {
       res.status(401).send({message: err.message});
     }
@@ -35,18 +29,18 @@ router
   
 
 
-  .post('/deletepost', async (req, res) => {
+  .post('/updatepost', async (req, res) => {
     try {
-      let noteupdates = await post.deletepost(req.body);
-      res.send(noteupdates)
+      let postupdates = await post.updatepost(req.body.id, req.body.postcontent);
+      res.send(postupdates)
     } catch(err) {
       res.status(401).send({message: err.message});
     }
   })
-  .post('/updatepost', async (req, res) => {
+  .post('/deletepost', async (req, res) => {
     try {
-      let noteedit= await post.updatepost(req.body);
-      res.send(noteedit)
+      let postdeletes= await post.deletepost(req.body.id);
+      res.send(postdeletes)
     } catch(err) {
       res.status(401).send({message: err.message});
     }

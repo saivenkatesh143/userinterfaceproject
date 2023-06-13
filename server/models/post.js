@@ -1,6 +1,10 @@
 // 1. import mongoose
 const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema({
+    userID: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
     postcontent: {type: String},
     postlikes: { type: String}
   })
@@ -13,7 +17,9 @@ async function createpost(id, postcontent){
   //const user = await getpost(id);
 
   const newpost=await post.create({
-    postcontent:postcontent
+    userID: id, 
+    postcontent: postcontent,
+    postlikes: 0
   });
   return newpost;
 
@@ -25,16 +31,13 @@ async function updatepost(id,postcontent){
 }
 
 async function deletepost(id){
-  await User.deleteOne({"_id": id});
+  await post.deleteOne({"_id": id});
 }
 
 // utility functions
 async function getpost(id) {
-  return await User.findOne({"_id": id});
+  return await post.findOne({"_id": id});
 }
 
 
-module.exports = {createpost,updatepost, deletepost};
-
-
-
+module.exports = {createpost,updatepost, deletepost, getpost};
