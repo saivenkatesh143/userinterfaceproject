@@ -1,9 +1,11 @@
+
+
 const Registerform = () => {
     return(
         <div>
          <div class="Registrationform">
 
-         <img src="client/styles/images/socialmediaphoto.jpeg" class="img-rounded" alt="socialmedia"></img>
+         <img src="client/styles/images/image2.jpeg" class="img-rounded" alt="socialmedia"></img>
         
 <label for="fname">First Name</label>
 <input type="text" name="fname" id="fname" required></input>
