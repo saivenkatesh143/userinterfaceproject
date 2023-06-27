@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+input[type=text],input[type=password],input[type=email]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background:#f1f1f1;
+  font-size:medium;
+  margin-bottom: 2rem;
+  display: flow-root;
+}
+
+input[type=submit]{
+    
+  background-color: #04AA6D;
+  width: 100%;
+  padding: 16px 20px;
+  font-size: medium;
+  margin: 8px 0;
+  display:flow-root;
+  margin-top: 3rem;
+
+}
+
+.photo {
+  max-width: 1100px;
+  margin: 50px;
+  
+}
+.allforms{
+  color:green;
+  background-color:azure;
+  width: 25%;
+  padding: 16px 20px;
+  font-size:large;
+  margin: 8px 0;
+  margin-left: 180px;
+}
