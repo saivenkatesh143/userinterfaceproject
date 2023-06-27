@@ -1,1 +1,1 @@
-![note application!](/public/images/userinterfacephoto1.jpeg "post")
+![note application!](/public/styles/images/userinterfacephoto1.jpeg "post")
