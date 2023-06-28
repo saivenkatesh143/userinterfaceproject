@@ -1,4 +1,4 @@
-const navigationbar= () => {
+const Navigation= () => {
 
     return (
 <div>
@@ -33,4 +33,4 @@ const navigationbar= () => {
     );
 }
 
-export default navigationbar;
+export default Navigation;
