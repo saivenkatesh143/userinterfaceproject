@@ -1,18 +1,25 @@
 import './App.css';
-import Loginform from './components/Loginforms.js';
-import Registerform from './components/Registerform.js';
-import About from './components/About.js';
-import Navigation from './components/Navigation.js';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Loginforms from './components/pages/Loginforms.js';
+import Registerform from './components/pages/Registerform.js';
+import About from './components/pages/About.js';
+import Navigation from './components/pages/Navigation.js';
 function App() {
   return (
     <div className="App">
-      <Navigation />
-      <About />
-      <h3>Please Enter the details to login</h3>
-      <Loginform />
-      <h3>Please enter the following details to Register</h3>
-      <Registerform />      
+              <BrowserRouter>
+          <Routes>
+          <Route path='/' element={ <Navigation />}>
+          <Route path="about" element={<About about={<About />}/>}/>
+             
+              <Route path="login" element={<Loginforms login={<Loginforms />}/>}/>
+              
+              <Route path="register" element={<Registerform />}/>
+              </Route>
+
+          </Routes>
+        </BrowserRouter>  
+       
     </div>
   );
 }
