@@ -5,8 +5,8 @@ const About = () => {
     <h1>The simplest way to know information all over the world</h1>
     <h3>Remember that you can do anything</h3>
     <nav>
-    <a href="register.html"><button class="allforms">Register</button></a>
-    <a href="login.html"><button class="allforms" >Login</button></a>
+    <a href="/register"><button class="allforms">Register</button></a>
+    <a href="/login"><button class="allforms" >Login</button></a>
 </nav>
 
     <section class="container">
