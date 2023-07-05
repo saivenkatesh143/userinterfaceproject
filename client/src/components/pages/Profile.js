@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { fetchData} from "../../main.js";
-import { useNavigate } from "react-router-dom";
+
 
 import React from "react";
 const Profile = () => {
 
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
   const [post,setPost] = useState({
 
       title: '', 
@@ -33,7 +33,6 @@ const Profile = () => {
           .then((data) => {
             if (data) {
               console.log(data);
-              navigate('/posts');
             }
           })
           .catch((error) => {
