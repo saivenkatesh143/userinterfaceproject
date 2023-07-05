@@ -1,61 +1,45 @@
-import { fetchData} from "../../main.js";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const Loginforms = () => {
-
+import { useState } from "react";
+import { fetchData} from "../../main.js";
+const Loginforms = (props) => {
   const navigate = useNavigate();
-  const [user,setuser] = useState({
+  const [user, setUser] = useState({
+    username: '',
+    password: '',
+  });
 
-    username:'',
-    password:''
-})
+  const { username, password } = user;
 
-const {username,password} = user;
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
 
-const onChange =(e) => setuser({...user,[e.target.name]: e.target.value})
-
-const onSubmit =(e) => {
-
+  const onSubmit = (e) => {
     e.preventDefault();
-   
-    
-
     fetchData("/user/login",
-        
-    {
-      username,
-      password
-    },
-     "POST")
+      {
+        username,
+        password
+      },
+      "POST")
+      .then((data) => {
+        if (!data.message) {
+          console.log(data)
+          storeInlocalStorage(data);
+          navigate("/profile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
-     .then((data) => {
-      if(!data.message){
-        console.log(data);
-        storeInlocalStorage(data);
-        navigate("/Profile");
-      }
-  
-     })
-  .catch((error)=>{
-  
-    console.log(error)
-  })
   }
-
   const storeInlocalStorage = (data) => {
     localStorage.setItem('user', JSON.stringify(data));
-    navigate("/Profile")
+    navigate("/profile")
   }
 
+  return (
 
-
-
-
-
-
-    return(
-        <div>
+       <div>
             <form onSubmit={onSubmit}>
              <h1>Please Enter the details to Login</h1>
              <div className="mb-3">
@@ -86,12 +70,9 @@ const onSubmit =(e) => {
     <input type="submit" className="btn btn-primary" value="Login"/>
 
             </form>
-        </div>
-    );
-
-
-
+     
+    </div>
+  );
 }
-
 
 export default Loginforms;
