@@ -1,19 +1,22 @@
-import { useState } from "react";
+import { useState,useEffect  } from "react";
 import { fetchData} from "../../main.js";
 
 
-import React from "react";
+
 const Profile = () => {
+  const [post, setPost] = useState({
+    title: "",
+    newPost: "",
+  });
+  const [username, setUsername] = useState("");
 
- // const navigate = useNavigate();
-  const [post,setPost] = useState({
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const loggedInUsername = user.username;
+    setUsername(loggedInUsername);
+  }, []);
 
-      title: '', 
-      Newpost: '',
-
-
-})
-      const { title, Newpost } = post;
+  const { title, Newpost } = post;
     
       const onChange = (e) => setPost({ ...post, [e.target.name]: e.target.value })
 
@@ -48,7 +51,8 @@ const Profile = () => {
 
             <div>
                 
-      <h2>Welcome</h2>
+      
+      <h2>Welcome, {username}</h2>
 
       <form>
         <div>
