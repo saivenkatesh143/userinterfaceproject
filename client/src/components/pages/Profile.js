@@ -9,7 +9,7 @@ const Profile = () => {
   const [post,setPost] = useState({
 
       title: '', 
-      content: '',
+      Newpost: '',
 
 
 })
