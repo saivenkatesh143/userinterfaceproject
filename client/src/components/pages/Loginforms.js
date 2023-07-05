@@ -34,7 +34,7 @@ const Loginforms = (props) => {
   }
   const storeInlocalStorage = (data) => {
     localStorage.setItem('user', JSON.stringify(data));
-    navigate("/profile")
+    navigate("/Profile")
   }
 
   return (
