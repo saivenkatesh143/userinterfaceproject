@@ -1,5 +1,46 @@
+import { useState } from "react";
+import { fetchData} from "../../main.js";
+import { useNavigate } from "react-router-dom";
+
 import React from "react";
-const profile = () => {
+const Profile = () => {
+
+  const navigate = useNavigate();
+  const [post,setPost] = useState({
+
+      title: '', 
+      content: '',
+
+
+})
+      const { title, Newpost } = post;
+    
+      const onChange = (e) => setPost({ ...post, [e.target.name]: e.target.value })
+
+      const onSubmit = (e) => {
+        e.preventDefault();
+        let user = localStorage.getItem('user');
+        console.log(user)
+        let parseUser = JSON.parse(user);
+        let userId = parseUser.username;
+        fetchData("/post/create",
+          {
+            title,
+            Newpost,
+            userId
+          },
+          "POST")
+          .then((data) => {
+            if (data) {
+              console.log(data);
+              navigate('/posts');
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      }
+
 
 
    
@@ -14,17 +55,27 @@ const profile = () => {
         <div>
 
         <div className="mb-3">
-          <label htmlFor="postcreate" className="form-label">Create a New post</label>
+        <label htmlFor="title" className="form-label">title</label>
           <textarea 
             type="text" 
             className="form-control" 
-            id="postnotes"
-            name='text'
+            id="title"
+            name='title'
+            onChange={onChange}
+            required
+            />
+          <label htmlFor="Newpost" className="form-label">Newpost</label>
+          <textarea 
+            type="text" 
+            className="form-control" 
+            id="Newpost"
+            name='Newpost'
+            onChange={onChange}
             required
           />
         </div>
         </div>
-        <input type="submit" className="btn btn-primary" value="Post"></input>
+        <input type="submit" className="btn btn-primary" value="Post" onClick={onSubmit}></input>
       </form>
 
       
@@ -38,4 +89,4 @@ const profile = () => {
 
 
 
-export default profile;
+export default Profile;
