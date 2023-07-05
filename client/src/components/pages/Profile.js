@@ -22,7 +22,7 @@ const Profile = () => {
         let user = localStorage.getItem('user');
         console.log(user)
         let parseUser = JSON.parse(user);
-        let userId = parseUser.username;
+        let userId = parseUser.userId;
         fetchData("/post/create",
           {
             title,
