@@ -54,7 +54,7 @@ const onSubmit =(e) => {
             <form onSubmit={onSubmit}>
          <div class="Registrationform">
 
-         <img src="client/styles/images/image2.jpeg" className="logo" alt="register App" />
+        
 
         
          <div className="mb-3">
