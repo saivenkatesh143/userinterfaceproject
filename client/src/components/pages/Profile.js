@@ -5,8 +5,7 @@ import { fetchData} from "../../main.js";
 
 const Profile = () => {
   const [post, setPost] = useState({
-    title: "",
-    newPost: "",
+    postcontent: "",
   });
   const [username, setUsername] = useState("");
 
@@ -16,7 +15,7 @@ const Profile = () => {
     setUsername(loggedInUsername);
   }, []);
 
-  const { title, Newpost } = post;
+  const {  postcontent } = post;
     
       const onChange = (e) => setPost({ ...post, [e.target.name]: e.target.value })
 
@@ -28,14 +27,14 @@ const Profile = () => {
         let userId = parseUser.username;
         fetchData("/post/createpost",
           {
-            title,
-            Newpost,
+            postcontent,
             userId
           },
           "POST")
           .then((data) => {
             if (data) {
               console.log(data);
+              
             }
           })
           .catch((error) => {
@@ -67,12 +66,12 @@ const Profile = () => {
             onChange={onChange}
             required
             />
-          <label htmlFor="Newpost" className="form-label">Newpost</label>
+          <label htmlFor="postcontent" className="form-label">Newpost</label>
           <textarea 
             type="text" 
             className="form-control" 
-            id="Newpost"
-            name='Newpost'
+            id="postcontent"
+            name='postcontent'
             onChange={onChange}
             required
           />
